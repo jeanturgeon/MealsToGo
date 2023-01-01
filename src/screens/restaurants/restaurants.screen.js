@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  margintop: ${StatusBar.currentHeight + 5}px;
+  marginTop: ${StatusBar.currentHeight + 5}px;
 `;
 
 const SearchContainer = styled.View`
