@@ -1,9 +1,11 @@
-import { Text, StyleSheet } from "react-native";
+import { Text, Image } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 
 import star from '../../assets/star'
+import open from '../../assets/open'
+import {Spacer} from "../UI/spacer.component";
 
 
 const RestaurantCard = styled(Card)`
@@ -25,11 +27,21 @@ const Info = styled.View`
   padding: ${props =>  props.theme.space[3]};
 `
 
+const Section = styled.View`
+  flexDirection: row;
+  alignItems: center;
+`
+
 const Rating = styled.View`
-  flex-direction: row;
+  flexDirection: row;
   padding: ${props =>  props.theme.space[2]} 0;
 `
 
+const IsOpen = styled.View`
+  flex: 1;
+  flexDirection: row;
+  justifyContent: flex-end;
+`
 const Address = styled.Text`
   fontFamily: ${props => props.theme.fonts.body};
   fontSize: ${props => props.theme.fontSizes.caption};  
@@ -38,12 +50,12 @@ const Address = styled.Text`
 export default function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
-    icon,
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = ["https://www.foodiesfeed.com/wp-content/uploads/2022/03/strawberry.jpg"],
     address = "100 rue de l'avenue",
     isOpenNow = true,
     rating = 5,
-    isClosedTemporarily = false 
+    isClosedTemporarily = true 
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -53,9 +65,18 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
-        <Rating>
-          {ratingArray.map(()=> <SvgXml xml={star} width={20} height={20}/>)}        
-        </Rating>
+        <Section>
+          <Rating>
+            {ratingArray.map((val, index)=> <SvgXml key={index} xml={star} width={20} height={20}/>)}        
+          </Rating>
+          <IsOpen>
+            {isClosedTemporarily && <Text variant='label' style={{color: 'red'}}>CLOSED TEMPORARILY</Text>}
+            <Spacer position='left' size='medium'  />
+            {isOpenNow && <SvgXml xml={open} width={20} height={20}/>}            
+          </IsOpen>
+          <Spacer  position='left' size='medium'/>
+          <Image style={{width:15, height:15}} source={{uri: icon}}/>
+        </Section>
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>
