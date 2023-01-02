@@ -2,10 +2,13 @@
 import camelize from "camelize";
 import { mocks, mockImages } from "./mock/";
 
-export const restaurantsReq = (location = "37.7749295,-122.4194155" /*SFO*/) => {
+export const restaurantsReq = (location) => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location];
-    !mock ? reject("not found") : resolve(mock);
+    if (!mock) {
+      reject("not found");
+    }
+    resolve(mock);
   });
 };
 
