@@ -7,10 +7,11 @@ import { useFonts as useLato, Lato_400Regular} from '@expo-google-fonts/lato'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons";
+
+
 import { SafeArea } from "./src/UI/safe-area.component";
-
 import {theme} from './src/UI/theme/index';
-
+import { RestaurantContextProvider } from "./src/services/restaurants/restaurants.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -67,9 +68,11 @@ export default function App() {
     <>
       <ThemeProvider theme={theme} >
         <SafeArea>
-          <NavigationContainer>
-              <NavigationTabs />
-          </NavigationContainer>        
+          <RestaurantContextProvider>
+            <NavigationContainer>
+                <NavigationTabs />
+            </NavigationContainer>   
+          </RestaurantContextProvider>     
         </SafeArea>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
