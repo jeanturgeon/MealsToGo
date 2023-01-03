@@ -26,12 +26,12 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
 
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={restaurant.name} source={{ uri: photos[0] }} />
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Text variant='label'>{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map((val, index)=> <SvgXml key={`star-${placeId}-${index}`} xml={star} width={20} height={20}/>)}        
+            {ratingArray.map((_ , index)=> <SvgXml key={`star-${placeId}-${index}`} xml={star} width={20} height={20}/>)}        
           </Rating>
           <IsOpen>
             {isClosedTemporarily && <Text variant='error'>CLOSED TEMPORARILY</Text>}
