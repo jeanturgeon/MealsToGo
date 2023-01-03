@@ -2,15 +2,12 @@ import React, {useContext} from "react";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import RestaurantInfoCard from '../../components/restaurants/restaurant-info-card.component';
-import { FlatList } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { Search } from '../../components/restaurants/search-bar.component'
 import styled from "styled-components/native";
 import { Spacer } from "../../UI/spacer.component";
 
 import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
-
-
-
 
 const LoadingSpinnerContainer = styled.View`
   position: absolute;
@@ -31,7 +28,8 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 
-export default function RestaurantsScreen() {
+export default function RestaurantsScreen(props) { 
+  /* We are getting the navigation prop from the RestaurantStack.Navigator which is calling this screen */
   const {isLoading, error, restaurants} = useContext(RestaurantsContext);
   return (
     <>
@@ -45,9 +43,11 @@ export default function RestaurantsScreen() {
         data={restaurants}
         renderItem={({item})=> {
           return (
-            <Spacer position='bottom' size='large'>
-              <RestaurantInfoCard restaurant={item}/>
-            </Spacer>        
+            <TouchableOpacity onPress={() => props.navigation.navigate('RestaurantDetail')}>
+              <Spacer position='bottom' size='large'>
+                <RestaurantInfoCard restaurant={item}/>
+              </Spacer>  
+            </TouchableOpacity>      
         )}}
         keyExtractor={(item) => item.name}        
       />      
