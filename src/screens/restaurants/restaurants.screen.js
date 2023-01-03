@@ -3,7 +3,7 @@ import { ActivityIndicator, Colors } from "react-native-paper";
 
 import RestaurantInfoCard from "../../components/restaurants/restaurant-info-card.component";
 import { FlatList, TouchableOpacity } from "react-native";
-import { Search } from "../../components/restaurants/search-bar.component";
+import { Search } from "../../components/restaurants/search-bar-restaurants.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../UI/spacer.component";
 
