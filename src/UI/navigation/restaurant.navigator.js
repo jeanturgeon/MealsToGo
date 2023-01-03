@@ -8,7 +8,11 @@ import { RestaurantDetailsScreen } from '../../components/restaurants/restaurant
 const RestaurantStack = createStackNavigator();
 export const RestaurantsNavigator = () => {
     return (
-        <RestaurantStack.Navigator headerMode='none' screenOptions={{...TransitionPresets.ModalPresentationIOS}}>
+        <RestaurantStack.Navigator
+            headerMode='none'
+            screenOptions={{...TransitionPresets.ModalPresentationIOS, gestureEnabled: true}}
+            
+        >
             <RestaurantStack.Screen 
                 name='Restaurants'
                 component={RestaurantsScreen}
