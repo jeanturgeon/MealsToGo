@@ -38,7 +38,7 @@ export default function RestaurantsScreen(props) {
         </LoadingSpinnerContainer>
       )}
       <Search />
-      <RestaurantList
+      <RestaurantList  
         data={restaurants}
         renderItem={({ item }) => {
           return (
