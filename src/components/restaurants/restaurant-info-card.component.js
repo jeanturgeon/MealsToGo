@@ -6,29 +6,42 @@ import open from '../../../assets/open'
 import {Spacer} from "../../UI/spacer.component";
 import { Icon, RestaurantCard, RestaurantCardCover, Info, Section, Rating, IsOpen} from "./restaurant-info-card.styles";
 
-export default function RestaurantInfoCard({ restaurant }) {
+export default function RestaurantInfoCard({ restaurant = {} }) {
+
+  const {
+    name = "Some Restaurant",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
+    address = "100 some random street",
+    isOpenNow = true,
+    rating = 4,
+    isClosedTemporarily = true,
+    placeId,
+  } = restaurant;
  
 
-  const ratingArray = Array.from(new Array(Math.floor(restaurant.rating)));
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={restaurant.name} source={{ uri: restaurant.photos[0] }} />
+      <RestaurantCardCover key={restaurant.name} source={{ uri: photos[0] }} />
       <Info>
-        <Text variant='label'>{restaurant.name}</Text>
+        <Text variant='label'>{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map((val, index)=> <SvgXml key={index} xml={star} width={20} height={20}/>)}        
+            {ratingArray.map((val, index)=> <SvgXml key={`star-${placeId}-${index}`} xml={star} width={20} height={20}/>)}        
           </Rating>
           <IsOpen>
-            {restaurant.isClosedTemporarily && <Text variant='error'>CLOSED TEMPORARILY</Text>}
+            {isClosedTemporarily && <Text variant='error'>CLOSED TEMPORARILY</Text>}
             <Spacer position='left' size='medium'  />
-            {restaurant.isOpenNow && <SvgXml xml={open} width={20} height={20}/>}            
+            {isOpenNow && <SvgXml xml={open} width={20} height={20}/>}            
           </IsOpen>
           <Spacer  position='left' size='medium'/>
-          <Icon source={{uri: restaurant.icon}}/>
+          <Icon source={{uri: icon}}/>
         </Section>
-        <Text variant='caption'>{restaurant.vicinity}</Text>
+        <Text variant='caption'>{address}</Text>
       </Info>
     </RestaurantCard>
   );

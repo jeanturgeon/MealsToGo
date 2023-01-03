@@ -7,7 +7,7 @@ export const LocationContextProvider = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [location, setLocation] = useState('');
-    const [keyword, setKeyword] = useState('');
+    const [keyword, setKeyword] = useState('San Francisco');
 
     const onSearch = (searchKeyword) => {      
         setIsLoading(true);

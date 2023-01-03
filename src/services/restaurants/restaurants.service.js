@@ -30,6 +30,10 @@ export const restaurantsTransform = ({results = []}) => {
             *the restaurant is indeed Open Now
             */
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now, 
+            /*
+            *the field we had mapped as 'address' is actually called 'vicinity in the data':
+            */
+           address: restaurant.vicinity
 
         };
     } )
