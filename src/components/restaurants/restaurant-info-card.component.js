@@ -5,6 +5,7 @@ import star from '../../../assets/star'
 import open from '../../../assets/open'
 import {Spacer} from "../../UI/spacer.component";
 import { Icon, RestaurantCard, RestaurantCardCover, Info, Section, Rating, IsOpen} from "./restaurant-info-card.styles";
+import { Favourite } from "../favourites/favourite.component";
 
 export default function RestaurantInfoCard({ restaurant = {} }) {
 
@@ -26,6 +27,7 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
 
   return (
     <RestaurantCard elevation={5}>
+      <Favourite restaurant={restaurant}/>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Text variant='label'>{name}</Text>

@@ -3,12 +3,12 @@ import { ThemeProvider } from "styled-components/native";
 import { useFonts as useOswald, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-
 import { SafeArea } from "./src/UI/safe-area.component";
 import { theme } from "./src/UI/theme/index";
+import { Navigator } from "./src/UI/navigation/app.navigator";
 import { RestaurantContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
-import { Navigator } from "./src/UI/navigation/app.navigator";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -22,11 +22,13 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <SafeArea>
-          <LocationContextProvider>
-            <RestaurantContextProvider>
-             <Navigator />
-            </RestaurantContextProvider>
-          </LocationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantContextProvider>
+                <Navigator />
+              </RestaurantContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
         </SafeArea>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
