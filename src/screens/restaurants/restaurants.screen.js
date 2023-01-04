@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import RestaurantInfoCard from "../../components/restaurants/restaurant-info-card.component";
 import { FlatList, TouchableOpacity } from "react-native";
 import { Search } from "../../components/restaurants/search-bar-restaurants.component";
+import { FavouritesBar } from "../../components/favourites/favourites-bar.components";
 import styled from "styled-components/native";
 import { Spacer } from "../../UI/spacer.component";
 
 import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../services/favourites/favourites.context";
 
 const LoadingSpinnerContainer = styled.View`
   position: absolute;
@@ -29,7 +31,12 @@ const RestaurantList = styled(FlatList).attrs({
 
 export default function RestaurantsScreen(props) {
   /* We are getting the navigation prop from the RestaurantStack.Navigator which is calling this screen */
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const {favourites} = useContext(FavouritesContext);
+  const [toggleFavourites, setToggleFavourites] = useState(false);
+
+
+
   return (
     <>
       {isLoading && (
@@ -37,7 +44,13 @@ export default function RestaurantsScreen(props) {
           <LoadingSpinner size={50} animating={true} color={Colors.blue300} />
         </LoadingSpinnerContainer>
       )}
-      <Search />
+      <Search 
+        isFavouriteToggled={toggleFavourites}
+        onFavouriteToggle={() => setToggleFavourites(!toggleFavourites)}
+      />
+      {toggleFavourites && 
+        <FavouritesBar favourites={favourites} onNavigate={props.navigation.navigate}/>
+      }
       <RestaurantList  
         data={restaurants}
         renderItem={({ item }) => {
