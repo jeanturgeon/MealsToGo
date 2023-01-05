@@ -9,7 +9,7 @@ import { getAuth } from 'firebase/auth';
 import { firebaseConfig} from './firebase.config';
 import { SafeArea } from "./src/UI/safe-area.component";
 import { theme } from "./src/UI/theme/index";
-import { Navigator } from "./src/UI/navigation/app.navigator";
+import { Navigation } from './src/UI/navigation/nav-index';
 import { RestaurantContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
@@ -38,7 +38,7 @@ export default function App() {
             <FavouritesContextProvider>
               <LocationContextProvider>
                 <RestaurantContextProvider>
-                  <Navigator />
+                  <Navigation />
                 </RestaurantContextProvider>
               </LocationContextProvider>
             </FavouritesContextProvider>

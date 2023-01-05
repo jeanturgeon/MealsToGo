@@ -1,4 +1,3 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -26,8 +25,6 @@ const Settings = () => {
   return <Text variant="caption">settings</Text>;
 };
 
-
-
 const NavigationTabs = () => {
   return (
     <Tab.Navigator
@@ -45,10 +42,6 @@ const NavigationTabs = () => {
   );
 };
 
-export const Navigator = () => {
-  return (
-    <NavigationContainer>
-      <NavigationTabs />
-    </NavigationContainer>
-  );
+export const AppNavigator = () => {
+  return <NavigationTabs />;
 };

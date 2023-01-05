@@ -66,7 +66,7 @@ import {
     return (
       <AuthenticationContext.Provider
         value={{
-          isAuthenticated: !!user,
+          isAuthenticated: false,
           user,
           isLoading,
           error,
