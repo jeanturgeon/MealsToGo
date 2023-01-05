@@ -23,8 +23,7 @@ export const AccountScreen = ({navigation}) => {
                         <Button
                             icon='email'                    
                             color='white'
-                            onPress={() => navigation.navigate('Register')} 
-                                               
+                            onPress={() => navigation.navigate('Register')}                                                
                         >
                             Register                           
                         </Button>
