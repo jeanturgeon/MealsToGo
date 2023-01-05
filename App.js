@@ -9,9 +9,6 @@ import { firebaseConfig} from './firebase.config';
 import { SafeArea } from "./src/UI/safe-area.component";
 import { theme } from "./src/UI/theme/index";
 import { Navigation } from './src/UI/navigation/nav-index';
-import { RestaurantContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContextProvider } from './src/services/auth/authentication.context';
 
 
@@ -20,8 +17,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+export default function App() {  
  
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
   const [latoLoaded] = useLato({ Lato_400Regular });
@@ -34,14 +30,8 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <SafeArea>
-            <FavouritesContextProvider>
-              <LocationContextProvider>
-                <RestaurantContextProvider>
-                  <Navigation />
-                </RestaurantContextProvider>
-              </LocationContextProvider>
-            </FavouritesContextProvider>
+          <SafeArea>            
+            <Navigation />            
           </SafeArea>
         </AuthenticationContextProvider>
       </ThemeProvider>

@@ -6,6 +6,9 @@ import { Button } from "react-native-paper";
 import { RestaurantsNavigator } from "./restaurant.navigator";
 import { MapScreen } from "../../screens/map/map.screen";
 import { AuthenticationContext } from "../../services/auth/authentication.context";
+import { RestaurantContextProvider } from "../../services/restaurants/restaurants.context";
+import { LocationContextProvider } from "../../services/location/location.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 
 
 const Tab = createBottomTabNavigator();
@@ -49,5 +52,16 @@ const NavigationTabs = () => {
 };
 
 export const AppNavigator = () => {
-  return <NavigationTabs />;
+  return (
+    <>
+      <FavouritesContextProvider>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <NavigationTabs />
+          </RestaurantContextProvider>
+        </LocationContextProvider>
+      </FavouritesContextProvider>
+    </>
+  )
+  
 };
