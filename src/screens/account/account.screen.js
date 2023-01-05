@@ -27,8 +27,7 @@ export const AccountScreen = ({navigation}) => {
                         >
                             Register                           
                         </Button>
-                    </ButtonContainer>
-                    
+                    </ButtonContainer>                    
                 </AccountContainer>
         </AccountBackground>
     )
