@@ -2,12 +2,14 @@ import React from 'react';
 import { Button } from "react-native-paper";
 
 
-import { AccountBackground, AccountCover, AccountContainer, ButtonContainer} from './account.styles';
+import { AccountBackground, AccountCover, AccountContainer, ButtonContainer, Title} from './account.styles';
+import {Spacer} from '../../UI/spacer.component'
 
 export const AccountScreen = ({navigation}) => {
     return (
         <AccountBackground>
             <AccountCover />
+            <Title>Meals To Go</Title>
                 <AccountContainer>
                     <ButtonContainer>
                         <Button
@@ -18,9 +20,10 @@ export const AccountScreen = ({navigation}) => {
                             Login                            
                         </Button>
                     </ButtonContainer>
+                    <Spacer position='bottom' size='xl'/>
                     <ButtonContainer>
                         <Button
-                            icon='lock-open-outline'                    
+                            icon='email'                    
                             color='white'
                             onPress={() => navigation.navigate('Register')} 
                                                

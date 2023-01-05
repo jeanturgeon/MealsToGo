@@ -17,8 +17,7 @@ import { AuthenticationContextProvider } from './src/services/auth/authenticatio
 
 
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+initializeApp(firebaseConfig);
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
