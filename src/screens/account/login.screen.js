@@ -6,7 +6,7 @@ import {Spacer} from '../../UI/spacer.component'
 import { Text } from  '../../UI/text.component'
 import { AuthenticationContext } from '../../services/auth/authentication.context';
 
-export const LoginScreen = ({ navigation }) => {
+export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, error } = useContext(AuthenticationContext);
@@ -29,8 +29,7 @@ export const LoginScreen = ({ navigation }) => {
             value={password}
             textContentType="password"
             secureTextEntry
-            autoCapitalize="none"
-            secure
+            autoCapitalize="none"            
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>

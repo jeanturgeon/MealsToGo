@@ -21,7 +21,7 @@ export const AccountScreen = ({navigation}) => {
                     </ButtonContainer>
                     <ButtonContainer>
                         <Button
-                            icon='lock-open-outline'                    
+                            icon='email'                    
                             color='white'
                             onPress={() => navigation.navigate('Register')} 
                                                
