@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 import { colors } from "../../UI/theme/colors";
+import { TextInput } from "react-native-paper";
+import { Text } from "../../UI/text.component";
 
 
 
@@ -24,6 +26,7 @@ export const AccountContainer = styled.View`
     backgroundColor: rgba(255,255,255, 0.4);
     padding: ${(props) => props.theme.space[4]};
     marginTop: ${(props) => props.theme.space[2]};
+    alignItems: center;
 `;
 
 export const ButtonContainer = styled.View`    
@@ -32,6 +35,21 @@ export const ButtonContainer = styled.View`
     width:130px;
     padding: ${(props) => props.theme.space[1]};
     marginTop: ${(props) => props.theme.space[3]};
+`;
+
+export const AuthInput = styled(TextInput)`
+  width: 250px;
+`;
+
+export const Title = styled(Text)`
+  font-size:${props => props.theme.fontSizes.h4}
+`;
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: center;
+  align-self: center;
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
 

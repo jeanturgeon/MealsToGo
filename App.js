@@ -3,8 +3,7 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { useFonts as useOswald, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import * as firebase from "firebase";
 
 import { firebaseConfig} from './firebase.config';
 import { SafeArea } from "./src/UI/safe-area.component";
@@ -17,8 +16,9 @@ import { AuthenticationContextProvider } from './src/services/auth/authenticatio
 
 
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

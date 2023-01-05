@@ -2,12 +2,13 @@ import React from 'react';
 import { Button } from "react-native-paper";
 
 
-import { AccountBackground, AccountCover, AccountContainer, ButtonContainer} from './account.styles';
+import { AccountBackground, AccountCover, AccountContainer, ButtonContainer, Title} from './account.styles';
 
 export const AccountScreen = ({navigation}) => {
     return (
         <AccountBackground>
             <AccountCover />
+            <Title>Meals To Go</Title>
                 <AccountContainer>
                     <ButtonContainer>
                         <Button
