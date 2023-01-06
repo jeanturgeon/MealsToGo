@@ -1,7 +1,10 @@
 import styled from "styled-components/native";
+import LottieView from 'lottie-react-native'
+
 import { colors } from "../../UI/theme/colors";
 import { TextInput } from "react-native-paper";
 import { Text } from "../../UI/text.component";
+
 
 
 
@@ -45,11 +48,20 @@ export const Title = styled(Text)`
   font-size:${props => props.theme.fontSizes.h4}
 `;
 export const ErrorContainer = styled.View`
-  max-width: 300px;
+  max-width: 250px;
   align-items: center;
   align-self: center;
   margin-top: ${(props) => props.theme.space[2]};
   margin-bottom: ${(props) => props.theme.space[2]};
+`;
+
+export const AnimationView = styled(LottieView).attrs({
+
+})`
+  width: 100%;
+  heigth: 40%;
+  position: absolute;
+  top: 10px;
 `;
 
 

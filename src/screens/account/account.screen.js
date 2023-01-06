@@ -2,12 +2,28 @@ import React from 'react';
 import { Button } from "react-native-paper";
 
 
-import { AccountBackground, AccountCover, AccountContainer, ButtonContainer, Title} from './account.styles';
+
+import { AccountBackground,
+        AccountCover,
+        AccountContainer,
+        ButtonContainer,
+        Title,
+        AnimationView} from './account.styles';
+
+
 
 export const AccountScreen = ({navigation}) => {
+
     return (
         <AccountBackground>
-            <AccountCover />
+            <AccountCover />            
+            <AnimationView 
+                key='animation'
+                autoPlay
+                loop
+                resizeMode='cover'
+                source={require('../../../assets/watermelon.json')}
+            />
             <Title>Meals To Go</Title>
                 <AccountContainer>
                     <ButtonContainer>
