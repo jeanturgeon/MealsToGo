@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import RestaurantInfoCard from "../../components/restaurants/restaurant-info-card.component";
-import { FlatList, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Search } from "../../components/restaurants/search-bar-restaurants.component";
 import { FavouritesBar } from "../../components/favourites/favourites-bar.components";
 import styled from "styled-components/native";
 import { Spacer } from "../../UI/spacer.component";
 
 import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
+import { RestaurantList } from "../../components/restaurants/restaurant-list.component";
 import { FavouritesContext } from "../../services/favourites/favourites.context";
 
 const LoadingSpinnerContainer = styled.View`
@@ -20,14 +21,6 @@ const LoadingSpinnerContainer = styled.View`
 const LoadingSpinner = styled(ActivityIndicator)`
   marginleft: -25px;
 `;
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingBottom: 16,
-  },
-})``;
 
 export default function RestaurantsScreen(props) {
   /* We are getting the navigation prop from the RestaurantStack.Navigator which is calling this screen */

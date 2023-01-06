@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
 import { SettingsScreen } from '../../screens/settings/settings.screen';
+import { FavouritesScreen } from '../../screens/favourites/favourites.screen';
 
 const SettingsStack = createStackNavigator();
 
@@ -17,7 +18,7 @@ export const SettingsNavigator = () => {
             />
             <SettingsStack.Screen 
                 name='Favourites'
-                component={() => null}
+                component={FavouritesScreen}
             />
         </SettingsStack.Navigator>
     );
