@@ -11,6 +11,7 @@ import { Spacer } from "../../UI/spacer.component";
 import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
 import { RestaurantList } from "../../components/restaurants/restaurant-list.component";
 import { FavouritesContext } from "../../services/favourites/favourites.context";
+import { FadeInView } from "../../UI/animations/fade.animation";
 
 const LoadingSpinnerContainer = styled.View`
   position: absolute;
@@ -44,21 +45,24 @@ export default function RestaurantsScreen(props) {
       {toggleFavourites && 
         <FavouritesBar favourites={favourites} onNavigate={props.navigation.navigate}/>
       }
-      <RestaurantList  
-        data={restaurants}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity 
-              onPress={() => props.navigation.navigate("RestaurantDetail",
-               { restaurant: item }/* which param that will be retrieved in restaurantDetail screen*/)}>
-              <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
-              </Spacer>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(item) => item.name}
-      />
+      
+        <RestaurantList  
+          data={restaurants}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity 
+                onPress={() => props.navigation.navigate("RestaurantDetail",
+                { restaurant: item }/* which param that will be retrieved in restaurantDetail screen*/)}>
+                <Spacer position="bottom" size="large">
+                  <FadeInView>
+                    <RestaurantInfoCard restaurant={item} />
+                  </FadeInView>
+                </Spacer>
+              </TouchableOpacity>
+            );
+          }}
+          keyExtractor={(item) => item.name}
+        />      
     </>
   );
 }

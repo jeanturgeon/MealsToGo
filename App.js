@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { useFonts as useOswald, Oswald_400Regular } from "@expo-google-fonts/oswald";
@@ -10,8 +9,6 @@ import { SafeArea } from "./src/UI/safe-area.component";
 import { theme } from "./src/UI/theme/index";
 import { Navigation } from './src/UI/navigation/nav-index';
 import { AuthenticationContextProvider } from './src/services/auth/authentication.context';
-
-
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
